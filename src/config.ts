@@ -10,6 +10,8 @@ export const SITE: Site = {
   postPerPage: 3,
 };
 
+export const LOCALE = ["en-EN"];
+
 export const LOGO_IMAGE = {
   enable: false,
   svg: true,
