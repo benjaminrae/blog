@@ -8,6 +8,7 @@ export const SITE: Site = {
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerPage: 3,
+  projectsPerPage: 3,
 };
 
 export const LOCALE = ["en-EN"];

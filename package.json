@@ -10,7 +10,7 @@
     "astro": "astro",
     "format:check": "prettier --plugin-search-dir=. --check .",
     "format": "prettier --plugin-search-dir=. --write .",
-    "cz": "cz",
+    "commit": "cz",
     "prepare": "husky install",
     "lint": "eslint ."
   },
