@@ -4,7 +4,7 @@ author: Benjamin Rae
 pubDatetime: 2023-03-22T19:57:35Z
 postSlug: my-first-day-of-hustlegpt
 featured: true
-draft: false
+draft: true
 tags:
   - hustlegpt
   - side-projects
@@ -77,7 +77,8 @@ The first step in establishing our digital presence was to purchase a domain for
 
 ### B. Designing a compelling landing page
 
-####Crafting a founder's letter
+#### Crafting a founder's letter
+
 HustleGPT helped me write a heartfelt founder's letter that we featured on our landing page. This letter explained my background as an ESL teacher, the challenges I faced in finding high-quality lesson plans, and my motivation for creating Linguaplan. By sharing my personal story, we aimed to connect with our target audience on a deeper level.
 
 #### Developing a tagline
