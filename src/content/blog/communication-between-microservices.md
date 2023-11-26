@@ -1,7 +1,7 @@
 ---
 title: Communication Between Microservices with RabbitMQ
 author: Benjamin Rae
-pubDatetime:
+pubDatetime: 2023-11-24T23:59:03.607Z
 postSlug: communication-between-microservices
 featured: true
 draft: true
@@ -14,5 +14,5 @@ tags:
   - nestjs
   - nodejs
 ogImage: ""
-description:
+description: Communication Between Microservices with RabbitMQ
 ---

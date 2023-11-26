@@ -1,3 +1,22 @@
+---
+title: Neovim on Windows
+author: Benjamin Rae
+pubDatetime: 2023-11-24T23:59:03.607Z
+postSlug: neovim-on-windows
+featured: true
+draft: true
+tags:
+  - microservices
+  - rabbitmq
+  - web-development
+  - typescript
+  - javascript
+  - nestjs
+  - nodejs
+ogImage: ""
+description: Neovim on Windows
+---
+
 # Neovim on Windows
 
 I decided to try Neovim recently since I've heard about all of the benefits of learning Vim motions.

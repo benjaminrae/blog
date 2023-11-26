@@ -1,7 +1,7 @@
 ---
 title: Using PNPM Workspaces to Manage a Monorepo
 author: Benjamin Rae
-pubDatetime:
+pubDatetime: 2023-11-24T23:59:03.607Z
 postSlug: pnpm-workspace-monorepo
 featured: true
 draft: true
@@ -12,5 +12,5 @@ tags:
   - javascript
   - nodejs
 ogImage: ""
-description:
+description: Pnpm Workspaces to manage monorepos
 ---

@@ -3,13 +3,9 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-Hi, I’m Benjamin Rae, a full-stack developer with a passion for SOLID and clean code. Before transitioning into the tech industry, I spent 8 years as an English teacher, and although I still have a passion for teaching, tech has taken over my heart.
+Hi, I’m Ben, a full-stack developer with a passion for learning. Before transitioning into the tech industry, I spent 8 years as an English teacher, and although I still have a passion for teaching, tech has taken over my heart. My journey started back at the start of the pandemic. I started learning Python (purely because I wanted to take a MOOC to help me design one that I was building) and immediately fell in love with writing code. Luckily, I didn't take too long to learn that you can also us semi-colons when writing code and expanded my horizons to JavaScript. It didn't take long to realise that, even with the semi-colons that I was missing in Python, something was still missing. That's when I discovered TypeScript, the language that I have used the most both personally and professionally. Nowadays, I like to write in TypeScript, Go and C#.
 
-My focus is on building high-quality software with a focus on best practices and design patterns. I believe that software should be easy to read, maintain, and scale, and I strive to achieve this in every project I work on.
-
-In addition to my development work, I’m also passionate about entrepreneurship and creating monetizable side projects. I’m always on the lookout for new opportunities to learn and grow as both a developer and an entrepreneur.
-
-When I’m not working on code, you can find me exploring new coffee shops, hiking in the mountains, or enjoying time with my family.
+When I’m not working on code, you can find me drinking coffee, watching rugby, or enjoying time with my cats Ash and Freya.
 
 Thanks for visiting my blog, and I hope you find the content helpful and informative. Feel free to reach out to me with any questions or ideas for collaboration!
 

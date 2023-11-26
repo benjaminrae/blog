@@ -1,3 +1,22 @@
+---
+title: Creating an HTTP Server from scratch
+author: Benjamin Rae
+pubDatetime: 2023-11-24T23:59:03.607Z
+postSlug: http-server-from-scratch
+featured: true
+draft: true
+tags:
+  - microservices
+  - rabbitmq
+  - web-development
+  - typescript
+  - javascript
+  - nestjs
+  - nodejs
+ogImage: ""
+description: Creating a HTTP Server from scratch
+---
+
 # Create an Http Server from scratch
 
 I think we are all very used to creating servers and using them. If you work in Node.js then I'm sure you are no stranger to Express. I was thinking, Express and similar frameworks hide a lot of "magic" from us, but how hard can it be to create a server from scratch?

@@ -1,3 +1,22 @@
+---
+title: Function Types Go
+author: Benjamin Rae
+pubDatetime: 2023-11-24T23:59:03.607Z
+postSlug: function-types-go
+featured: true
+draft: true
+tags:
+  - microservices
+  - rabbitmq
+  - web-development
+  - typescript
+  - javascript
+  - nestjs
+  - nodejs
+ogImage: ""
+description: Function types Go
+---
+
 # Function Types Go
 
 Something that I find myself doing very regularly in TypeScript is declaring a function type, then using that type to create implementations.

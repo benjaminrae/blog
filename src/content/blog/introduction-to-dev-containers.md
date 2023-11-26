@@ -1,7 +1,7 @@
 ---
 title: Introduction to Dev Containers
 author: Benjamin Rae
-pubDatetime:
+pubDatetime: 2023-11-24T23:59:03.607Z
 postSlug: introduction-to-dev-containers
 featured: true
 draft: true
@@ -14,5 +14,5 @@ tags:
   - docker
   - typescript
 ogImage: ""
-description:
+description: Introduction to Dev Containers
 ---
