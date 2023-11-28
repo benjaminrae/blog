@@ -12,6 +12,7 @@ tags:
   - tsup
 description: Join me as a try to build my first browser extension, "Hacker News Scroller". Nothing too fancy, just a casual walkthrough of the process and the hiccups I faced along the way.
 ---
+## Table of contents
 
 ## How I Got Here
 

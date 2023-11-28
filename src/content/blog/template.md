@@ -11,3 +11,13 @@ tags:
 ogImage: ""
 description: Write your description here
 ---
+
+Required 
+- title
+- pubDatetime
+- description
+
+Default 
+- draft=false
+- featured=false
+
