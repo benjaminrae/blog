@@ -1,8 +1,7 @@
 ---
 title: Building My First Browser Extension
 author: Benjamin Rae
-pubDatetime: 2023-11-24T23:59:03.607Z
-postSlug: building-my-first-browser-extension
+pubDatetime: 2023-11-27T23:59:03.607Z
 draft: false
 featured: true
 tags:
@@ -11,7 +10,6 @@ tags:
   - javascript
   - typescript
   - tsup
-ogImage: ""
 description: Building my first browser extension
 ---
 
@@ -25,7 +23,7 @@ You might have gathered, since I'm talking about looking at this during the day,
 
 Where am I going with this? Well, my attention span being what it is, I often feel that certain comment threads on HN get a bit boring after the first couple of replies, not only that it starts to look like callback hell, and it's often impossible to know which level of the thread you're on.
 
-![Hacker News comment hell](../../assets/blog/HN-comment-hell.png)
+![Hacker News comment hell](../../assets/blog/building-first-browser-extension/HN-comment-hell.png)
 
 With that problem came my idea for my first browser extension. Help me find the comments I want to read and let me skip the rest.
 
@@ -68,9 +66,7 @@ Here's my `manifest.json` file:
 
 I built my extension using manifest verison 3, so that's what I'm able to talk about here. It is the newest version and it does bring some important changes compared to older versions.
 
-[//]: # "TODO: Add link to manifest.json docs"
-
-Check the changes here:
+Check the overview of manifest v3 [here](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-overview/).
 
 ### Content Scripts
 
@@ -139,12 +135,153 @@ So, it is possible to use HMR with browser extensions, but it would require a li
 
 Now, let me clear this up a bit because I was being a little dramatic. You DON'T need to refesh the extension every single time you make a change to the code.
 
+Here's the lowdown:
+
+| File               | Requires Reload          |
+| ------------------ | ------------------------ |
+| manifest.json      | Yes                      |
+| Background scripts | Yes                      |
+| Content scripts    | Yes and refresh the page |
+| Popup.html         | No                       |
+| ! Options.html     | No                       |
+
+### Problems I faced
+
+Skip this section if you're only interested in how to build a browser extension. I'm going to talk a bit about developing my specific extension.
+
+One approach that I took was trying to use a doubly linked list to be able to always go to the next or previous comment.
+
+This approach worked really well, I didn't even need to implement the full functionality of a linked list and I was able to jump from comment to comment with relative ease. But I ran into a small hiccup.
+
+A user may scroll manually with the mousewheel at some point and the next and previous references would be incorrect. I thought about trying to keep the linked list up to date, possibly using an `IntersectionObserver` to detect when the user has scrolled to a new comment. This all made it seem like my simple solution was about to become a very complex one, and that my chosen data structure ([Doubly Linked List](https://en.wikipedia.org/wiki/Doubly_linked_list)) was not the right one for the job.
+
+I went back to my MVP approach and decided to create maps with the y position of each comment as the key and the DOM element itself as the value. This way I could easily find the next comment by getting the next key in the map. This works reasonally however, because y position is a float, I decided to store the floor of the y position in one map, and the ceil in another. This just made it a little easier to find the corresponding comment depending on the direction of the scroll. All I had to do was give the current y scroll position of the window object and the I could get the next and previous comments. I even added a way of highlighting the current comment.
+
+```ts
+export class CommentMap {
+  #comments: Map<number, Comment>;
+  #ceilComments: Map<number, Comment>;
+  #floorComments: Map<number, Comment>;
+
+  constructor() {
+    this.#comments = new Map();
+    this.#ceilComments = new Map();
+    this.#floorComments = new Map();
+  }
+
+  add(comment: Comment): void {
+    this.#comments.set(comment.getY(), comment);
+    this.#floorComments.set(Math.floor(comment.getY()), comment);
+    this.#ceilComments.set(Math.ceil(comment.getY()), comment);
+  }
+
+  get(yPosition: number): Comment | null {
+    return this.#comments.get(yPosition) ?? null;
+  }
+
+  next(yPosition: number) {
+    const commentPositions = Array.from(this.#floorComments.keys()).sort(
+      (key1, key2) => key1 - key2
+    );
+
+    const nextCommentPosition = commentPositions.find(
+      commentPosition => commentPosition > yPosition
+    );
+
+    if (!nextCommentPosition) {
+      return null;
+    }
+
+    const nextComment = this.#floorComments.get(nextCommentPosition);
+
+    if (!nextComment) {
+      return null;
+    }
+
+    this.highlightCommentParent(nextComment);
+
+    return nextComment;
+  }
+
+  prev(yPosition: number) {
+    const commentPositions = Array.from(this.#ceilComments.keys()).sort(
+      (key1, key2) => key2 - key1
+    );
+
+    const previousCommentPosition = commentPositions.find(
+      commentPosition => commentPosition < yPosition
+    );
+
+    if (!previousCommentPosition) {
+      return null;
+    }
+
+    const previousComment = this.#ceilComments.get(previousCommentPosition);
+
+    if (!previousComment) {
+      return null;
+    }
+
+    this.highlightCommentParent(previousComment);
+
+    return previousComment;
+  }
+
+  highlightComment(comment: Comment): void {
+    const commentElement = comment.getDomElement();
+
+    commentElement.classList.add("hn-highlight");
+
+    setTimeout(() => {
+      commentElement.classList.remove("hn-highlight");
+    }, 2000);
+  }
+
+  highlightCommentParent(comment: Comment): void {
+    const commentElement = comment.getDomElement();
+
+    const parent = commentElement.parentElement;
+
+    if (!parent) {
+      return;
+    }
+
+    parent.classList.add("hn-highlight");
+
+    setTimeout(() => {
+      parent.classList.remove("hn-highlight");
+    }, 2000);
+  }
+
+  public static from(...args: Comment[]): CommentMap {
+    const commentMap = new CommentMap();
+
+    args.forEach(comment => commentMap.add(comment));
+
+    return commentMap;
+  }
+}
+```
+
+Take a look at the extension in action:
+
+![Jumping between comments](../../assets/blog/building-first-browser-extension/HN-comment-scroller.gif)
+
 ## Publishing the extension
 
-If you decide you want to publish an extension on the Chrome Web Store the first step is parting with your hard earned cash. Unfortunately,
+If you decide you want to publish an extension on the Chrome Web Store the first step is parting with your hard earned cash. Unfortunately, you need to spend €5 to be able to publish an extension. I'm not sure if this is the same for other browsers, but I would assume so. Remember though, even though you are publishing on the Chrome Web Store, your extension will be available on all Chromium based browsers.
+
+Once you've paid your €5, you can go to the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/) and create a new extension. You'll need to upload a zip file of your extension. You can create this by zipping up your `dist` folder. You'll also need to upload some screenshots and a logo for your extension and there's plenty of other fields to fill out too.
+
+Once you've done that, you can publish your extension.
 
 ## Try it yourself
 
-If you'd like to try building your own extension with TypeScript, then feel free to use my [GitHub template](https://github.com/benjaminrae/ts-chrome-extension-starter). It uses Tsup like in my example.
+If you'd like to try building your own extension with TypeScript, then feel free to use my [GitHub template](https://github.com/benjaminrae/ts-chrome-extension-starter). It uses Tsup like in my example. Otherwise, you could always try Parcel or Vite to make one. If you're daring enough, then vanilla JS is also an option.
 
 I'd love to see what you can come up with.
+
+## Links
+
+- [Github repo](https://github.com/benjaminrae/hacker-news-tools-extension)
+- [GitHub template](https://github.com/benjaminrae/ts-chrome-extension-starter)
