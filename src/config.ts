@@ -1,9 +1,9 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-  website: "https://benjaminrae.com/",
+  website: "https://benjaminrae.dev/",
   author: "Benjamin Rae",
-  desc: "A blog about web development, side-projects, and more",
+  desc: "A blog about development, side-projects, and more",
   title: "Benjamin Rae",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
@@ -13,10 +13,12 @@ export const SITE: Site = {
 export const LOCALE = ["en-EN"];
 
 export const LOGO_IMAGE = {
-  enable: false,
+  enable: true,
   svg: true,
-  width: 216,
-  height: 46,
+  width: 75,
+  height: 75,
+  light: "logo-black.svg",
+  dark: "logo-white.svg",
 };
 
 export const SOCIALS: SocialObjects = [
