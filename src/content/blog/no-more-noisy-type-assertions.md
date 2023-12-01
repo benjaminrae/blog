@@ -15,13 +15,15 @@ description: Are you sick of filling your TypeScript code with noisy type assert
 
 One of the criticisms of TypeScript that I've seen floating around the internet is that TypeScript can add a lot of noise your codebase. Even though I would never work with JavaScript with it, there probably is some truth behind that opinion.
 
+I was building a simple POC today for a browser extension and basically what I was trying to do was handle messages send from the extension's popup to the extension's background script. I found myself in a situation where I was doing a lot of type assertions and it got me thinking about how I could avoid that.
+
+Have you ever found yourself in a situation like this?
+
 Let's see if we can clean up some of that noise today.
 
 ![](https://media.giphy.com/media/xsATxBQfeKHCg/giphy-downsized-large.gif)
 
-Have you ever found yourself in a situation like this?
-
-Imagine you have these types
+Imagine you have these types:
 
 ```ts
 enum MessageActions {
@@ -108,7 +110,7 @@ NO. I am not happy. I can maybe bear this kind of thing once in a while, but whe
 
 So what's the solution?
 
-### The "Do it Once" method.
+### The "Do it Once" method
 
 Declare a new variable and do the type assertion once like this:
 
@@ -134,9 +136,8 @@ We're going to take advantage of a TypeScript operator that you might not have h
 Type guards are not specific to TypeScript and I'm sure you've already used them.
 
 ```ts
-const isStartMessage = (message: Message<unknown>): boolean => {
-  return message.action === MessageActions.START;
-};
+const isStartMessage = (message: Message<unknown>): boolean =>
+  message.action === MessageActions.START;
 ```
 
 There you have a type guard. Simple, right? That type guard will actually do nothing for us.
@@ -153,12 +154,11 @@ const handleMessage = (message: Message<unknown>) => {
 
 We are still getting the same error as before. That's because `isStartMessage` simple checks `message.action` and returns a boolean. What we need to do is also let TypeScript know that `isStartMessage` is a type guard.
 
-Here's the new type guard leveraging TypeScript's is operator.
+Here's the new type guard leveraging TypeScript's `is`` operator.
 
 ```ts
-const isStartMessage = (message: Message<unknown>): message is StartMessage => {
-  return message.action === MessageActions.START;
-};
+const isStartMessage = (message: Message<unknown>): message is StartMessage =>
+  message.action === MessageActions.START;
 ```
 
 As you can see it reads pretty logically. The type guard is checking if `message` is a `StartMessage`. And by doing it this way, TypeScript now knows that inside the `if` block, `message` is of type `StartMessage`.
