@@ -1,7 +1,7 @@
 ---
 title: No More Noisy Type Assertions
 author: Benjamin Rae
-pubDatetime: 2023-11-29T23:59:03.607Z
+pubDatetime: 2023-12-03T20:00:00.607Z
 featured: true
 draft: false
 tags:

@@ -12,13 +12,17 @@
     --color-card-muted: 205, 205, 205;
     --color-border: 236, 233, 233;
   }
+  /*
+    https://coolors.co/282c34-eaedf3-61afef-343f60-e06c75-98c379
+    One Dark inspired
+  */
   html[data-theme="dark"] {
     --color-fill: 40, 44, 52;
     --color-text-base: 234, 237, 243;
     --color-accent: 97, 175, 239;
     --color-card: 52, 63, 96;
-    --color-card-muted: 138, 51, 2;
-    --color-border: 224, 108, 117;
+    --color-card-muted: 224, 108, 117;
+    --color-border: 152, 195, 121;
   }
   #sun-svg,
   html[data-theme="dark"] #moon-svg {
