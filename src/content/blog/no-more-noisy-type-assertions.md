@@ -154,7 +154,7 @@ const handleMessage = (message: Message<unknown>) => {
 
 We are still getting the same error as before. That's because `isStartMessage` simple checks `message.action` and returns a boolean. What we need to do is also let TypeScript know that `isStartMessage` is a type guard.
 
-Here's the new type guard leveraging TypeScript's `is`` operator.
+Here's the new type guard leveraging TypeScript's `is` operator.
 
 ```ts
 const isStartMessage = (message: Message<unknown>): message is StartMessage =>
