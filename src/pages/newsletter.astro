@@ -1,0 +1,36 @@
+---
+import Header from "@components/Header.astro";
+import LinkButton from "@components/LinkButton.astro";
+import { SITE } from "@config";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+---
+
+<Layout title={`Newsletter | ${SITE.title}`}>
+  <Header activeNav="newsletter" />
+  <Main pageTitle="Newsletter" pageDesc="Sign up for the newsletter">
+    <p>
+      In this weekly newsletter I share with you interesting things I find in
+      the world of software development. There will be articles, videos, stories
+      and hopefully plenty of laughs. There's something from everyone, frontend
+      to backend, junior to senior.
+      <br />
+      <br />
+       I take you down my internet rabbit hole of the week.
+      <br />
+      <br />
+       If you're lucky, you might even get the some pictures of my cats!
+    </p>
+    <div class="mb-8"></div>
+    <div class="flex-col">
+      <div class="flex justify-center gap-16">
+        <LinkButton href="" className="font-bold">Subscribe to RSS</LinkButton>
+        <LinkButton href="" className="font-bold">View Archive</LinkButton>
+      </div>
+      <iframe
+        scrolling="no"
+        style="width:100%!important;height:220px;border:1px #ccc solid !important"
+        src="https://buttondown.email/benjaminrae?as_embed=true"></iframe>
+    </div>
+  </Main>
+</Layout>
