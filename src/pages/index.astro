@@ -55,6 +55,15 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           bio
         </LinkButton> for more info.
       </p>
+      <p>
+        If you want more content, check out my weekly
+        <LinkButton
+          href="/newsletter"
+          className="font-bold underline decoration-dashed underline-offset-4 hover:text-skin-accent"
+        >
+          newsletter.
+        </LinkButton>
+      </p>
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
