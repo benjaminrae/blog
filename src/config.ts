@@ -10,7 +10,10 @@ export const SITE: Site = {
   postPerPage: 3,
 };
 
-export const LOCALE = ["en-EN"];
+export const LOCALE = {
+  lang: "en", // html lang code. Set this empty and default will be "en"
+  langTag: ["en-EN"], // BCP 47 Language Tags. Set this empty [] to use the environment default
+} as const;
 
 export const LOGO_IMAGE = {
   enable: true,
@@ -18,7 +21,7 @@ export const LOGO_IMAGE = {
   width: 75,
   height: 75,
   light: "logo-black.svg",
-  dark: "logo-white.svg",
+  dark: "logo-white.svg"
 };
 
 export const SOCIALS: SocialObjects = [
