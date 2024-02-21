@@ -1,3 +1,4 @@
+import type { GiscusProps } from "@giscus/react";
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
@@ -21,7 +22,7 @@ export const LOGO_IMAGE = {
   width: 75,
   height: 75,
   light: "logo-black.svg",
-  dark: "logo-white.svg"
+  dark: "logo-white.svg",
 };
 
 export const SOCIALS: SocialObjects = [
@@ -146,3 +147,17 @@ export const SOCIALS: SocialObjects = [
     active: false,
   },
 ];
+
+export const GISCUS: GiscusProps = {
+  repo: "benjaminrae/blog",
+  repoId: "R_kgDOJM6dNA",
+  category: "Announcements",
+  categoryId: "DIC_kwDOJM6dNM4CdXb7",
+  mapping: "pathname",
+  reactionsEnabled: "1",
+  emitMetadata: "0",
+  inputPosition: "bottom",
+  lang: "en",
+  loading: "lazy",
+  strict: "0",
+};
