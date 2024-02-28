@@ -22,9 +22,7 @@
 **Deployment** - [Cloudflare Pages](https://pages.cloudflare.com/)  
 **Illustration in About Page** - [https://freesvgillustration.com](https://freesvgillustration.com/)  
 **Linting** - [ESLint](https://eslint.org)
-<<<<<<< HEAD
 **Theme** - [AstroPaper](https://github.com/satnaing/astro-paper/tree/astro-paper-v1)
-=======
 
 ## 👨🏻‍💻 Running Locally
 
@@ -49,7 +47,6 @@ You can easily add your [Google Site Verification HTML tag](https://support.goog
 # in your environment variable file (.env)
 PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-site-verification-value
 ```
->>>>>>> update/main
 
 ## 🧞 Commands
 
