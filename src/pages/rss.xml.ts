@@ -15,7 +15,7 @@ export async function GET() {
     description: SITE.desc,
     site: SITE.website,
     items: sortedPosts.map(({ data, slug, body }) => ({
-      link: `posts/${slug}`,
+      link: `posts/${slug}/`,
       title: data.title,
       content: sanitizeHtml(parser.render(body)),
       description: data.description,
