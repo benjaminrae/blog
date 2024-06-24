@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "/workshop"
-  to = "https://miro.com/app/board/uXjVKQqTKGc=/?share_link_id=320172471347"
-  status = 200
-  force = true # COMMENT: ensure that we always redirect
